@@ -13,6 +13,8 @@
     "@types/react-sticky": "^6.0.3",
     "@types/uuid": "^8.3.0",
     "axios": "^0.20.0",
+    "mobx": "^5.15.7",
+    "mobx-react-lite": "^2.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",

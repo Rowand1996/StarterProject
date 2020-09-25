@@ -7,7 +7,7 @@ using Persistence;
 using Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatingApp.API.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
