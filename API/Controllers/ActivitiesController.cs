@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using MediatR;
 using Application.Activities;
 using System.Threading;
+using Microsoft.Extensions.Logging;
+using API.Middleware;
 
 namespace API.Controllers
 {
@@ -16,23 +18,50 @@ namespace API.Controllers
     [ApiController]
     public class ActivitiesController : ControllerBase
     {
+        private readonly ILogger _logger;        
         private readonly IMediator _mediator;
         public ActivitiesController(IMediator mediator)
         {
             _mediator = mediator;
+            
+
+            var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddFilter("Microsoft", LogLevel.Warning)
+                       .AddFilter("System", LogLevel.Warning)
+                       .AddFilter("SampleApp.Program", LogLevel.Debug)
+                       .AddConsole();
+            }
+            );
+
+            _logger = loggerFactory.CreateLogger("console");
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Activity>>> List()
         {
             return await _mediator.Send(new List.Query());
-        } 
+        }
 
-        [HttpGet("{id}")] 
+        [HttpGet("{id}")]
 
         public async Task<ActionResult<Activity>> Details(Guid id)
         {
-            return await _mediator.Send(new Details.Query{Id = id});
+            var result = await _mediator.Send(new Details.Query { Id = id });
+            _logger.LogInformation("test log", null);
+
+            if (result == null)
+            {
+                _logger.LogInformation("null activity");
+            }
+            else
+            {
+                _logger.LogInformation("got activity");
+            }
+
+            
+
+            return result;
         }
 
         [HttpPost]
@@ -42,7 +71,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Unit>> Edit(Guid id,  Edit.Command command)
+        public async Task<ActionResult<Unit>> Edit(Guid id, Edit.Command command)
         {
             command.Id = id;
             return await _mediator.Send(command);
@@ -51,7 +80,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Unit>> Delete(Guid id)
         {
-            return await _mediator.Send(new Delete.Command{Id = id});
+            return await _mediator.Send(new Delete.Command { Id = id });
         }
     }
 }
