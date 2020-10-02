@@ -23,7 +23,6 @@ namespace API.Controllers
         public ActivitiesController(IMediator mediator)
         {
             _mediator = mediator;
-            
 
             var loggerFactory = LoggerFactory.Create(builder =>
             {
@@ -58,8 +57,6 @@ namespace API.Controllers
             {
                 _logger.LogInformation("got activity");
             }
-
-            
 
             return result;
         }
