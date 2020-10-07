@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Item, Label, List, Segment, Image } from "semantic-ui-react";
 
-export const ActivityDetailedSidebar = () => {
+ const ActivityDetailedSidebar = () => {
   return (
     <Fragment>
       <Segment
@@ -57,3 +57,7 @@ export const ActivityDetailedSidebar = () => {
     </Fragment>
   );
 };
+
+
+export default ActivityDetailedSidebar;
+

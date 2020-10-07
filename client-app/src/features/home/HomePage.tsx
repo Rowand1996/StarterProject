@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Header, Image, Segment } from "semantic-ui-react";
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <Segment inverted textAlign="center" vertical className="masthead">
       <Container text>

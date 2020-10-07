@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Segment, Header, Form, Button, Comment } from "semantic-ui-react";
 
-export const ActivityDetailedChat = () => {
+const ActivityDetailedChat = () => {
   return (
     <Fragment>
       <Segment
@@ -57,3 +57,5 @@ export const ActivityDetailedChat = () => {
     </Fragment>
   );
 };
+
+export default ActivityDetailedChat;

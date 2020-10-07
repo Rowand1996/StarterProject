@@ -3,9 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Button, Container, Menu } from "semantic-ui-react";
 
-
-export const NavBar: React.FC = () => {
-
+const NavBar: React.FC = () => {
   return (
     <Menu fixed="top" inverted>
       <Container>
@@ -17,10 +15,11 @@ export const NavBar: React.FC = () => {
           />
           Reactivities
         </Menu.Item>
-        <Menu.Item name="Activities" as={NavLink} to='/activities'/>
+        <Menu.Item name="Activities" as={NavLink} to="/activities" />
         <Menu.Item>
           <Button
-            as={NavLink} to='/createActivity'
+            as={NavLink}
+            to="/createActivity"
             positive
             content="Create Activity"
           />

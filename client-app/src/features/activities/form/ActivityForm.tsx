@@ -10,7 +10,7 @@ interface DetailParams {
   id: string;
 }
 
-export const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
+const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
   match,
   history,
 }) => {

@@ -1,11 +1,10 @@
 import axios, { AxiosResponse } from "axios";
-import { history } from "../..";
 import { IActivity } from "../models/activity";
+import { history } from "../..";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 
 axios.interceptors.response.use(undefined, (error) => {
-  console.log(error.response.status);
   if (error.response.status === 404) {
     history.push('/notfound');
   }
