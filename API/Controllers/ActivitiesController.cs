@@ -1,16 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Persistence;
-using Domain;
-using Microsoft.EntityFrameworkCore;
-using MediatR;
 using Application.Activities;
-using System.Threading;
-using Microsoft.Extensions.Logging;
-using API.Middleware;
+using Domain;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
@@ -18,22 +12,10 @@ namespace API.Controllers
     [ApiController]
     public class ActivitiesController : ControllerBase
     {
-        private readonly ILogger _logger;        
         private readonly IMediator _mediator;
         public ActivitiesController(IMediator mediator)
         {
             _mediator = mediator;
-
-            var loggerFactory = LoggerFactory.Create(builder =>
-            {
-                builder.AddFilter("Microsoft", LogLevel.Warning)
-                       .AddFilter("System", LogLevel.Warning)
-                       .AddFilter("SampleApp.Program", LogLevel.Debug)
-                       .AddConsole();
-            }
-            );
-
-            _logger = loggerFactory.CreateLogger("console");
         }
 
         [HttpGet]
@@ -43,22 +25,9 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-
         public async Task<ActionResult<Activity>> Details(Guid id)
         {
-            var result = await _mediator.Send(new Details.Query { Id = id });
-            _logger.LogInformation("test log", null);
-
-            if (result == null)
-            {
-                _logger.LogInformation("null activity");
-            }
-            else
-            {
-                _logger.LogInformation("got activity");
-            }
-
-            return result;
+            return await _mediator.Send(new Details.Query{Id = id});
         }
 
         [HttpPost]
@@ -77,7 +46,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Unit>> Delete(Guid id)
         {
-            return await _mediator.Send(new Delete.Command { Id = id });
+            return await _mediator.Send(new Delete.Command{Id = id});
         }
     }
 }

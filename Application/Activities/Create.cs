@@ -1,10 +1,10 @@
-using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Persistence;
 using Domain;
 using FluentValidation;
+using MediatR;
+using Persistence;
 
 namespace Application.Activities
 {
@@ -21,7 +21,7 @@ namespace Application.Activities
             public string Venue { get; set; }
         }
 
-        public class CommandValidator : AbstractValidator<Command> 
+        public class CommandValidator : AbstractValidator<Command>
         {
             public CommandValidator()
             {
@@ -41,9 +41,10 @@ namespace Application.Activities
             {
                 _context = context;
             }
+
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var activity = new Activity 
+                var activity = new Activity
                 {
                     Id = request.Id,
                     Title = request.Title,
@@ -57,11 +58,10 @@ namespace Application.Activities
                 _context.Activities.Add(activity);
                 var success = await _context.SaveChangesAsync() > 0;
 
-                if(success) return Unit.Value;
+                if (success) return Unit.Value;
 
                 throw new Exception("Problem saving changes");
             }
         }
     }
 }
-
