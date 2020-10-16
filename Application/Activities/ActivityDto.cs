@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
+
 namespace Application.Activities
 {
     public class ActivityDto

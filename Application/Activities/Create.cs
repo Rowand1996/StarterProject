@@ -60,8 +60,9 @@ namespace Application.Activities
                 };
 
                 _context.Activities.Add(activity);
-                
-                var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == _userAccessor.GetCurrentUsername());
+
+                var user = await _context.Users.SingleOrDefaultAsync(x => 
+                    x.UserName == _userAccessor.GetCurrentUsername());
 
                 var attendee = new UserActivity
                 {
@@ -71,7 +72,7 @@ namespace Application.Activities
                     DateJoined = DateTime.Now
                 };
 
-                _context.UserActivities.Add(attendee); 
+                _context.UserActivities.Add(attendee);
 
                 var success = await _context.SaveChangesAsync() > 0;
 
