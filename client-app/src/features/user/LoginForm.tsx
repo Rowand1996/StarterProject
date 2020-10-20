@@ -4,7 +4,7 @@ import { Form as FinalForm, Field } from "react-final-form";
 import { Form, Button,Header } from "semantic-ui-react";
 import ErrorMessage from "../../app/common/form/ErrorMessage";
 import TextInput from "../../app/common/form/TextInput";
-import { IUserFormValues } from "../../app/models/User";
+import { IUserFormValues } from "../../app/models/user";
 import { RootStoreContext } from "../../app/stores/rootStore";
 
 const LoginForm = () => {

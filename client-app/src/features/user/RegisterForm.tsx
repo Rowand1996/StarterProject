@@ -4,9 +4,9 @@ import { Button, Form, Header } from "semantic-ui-react";
 import ErrorMessage from "../../app/common/form/ErrorMessage";
 import TextInput from "../../app/common/form/TextInput";
 import { RootStoreContext } from "../../app/stores/rootStore";
-import { IUserFormValues } from "../../app/models/User";
 import { FORM_ERROR } from "final-form";
 import { combineValidators, isRequired } from "revalidate";
+import { IUserFormValues } from "../../app/models/user";
 
 const validate = combineValidators({
   email: isRequired("email"),
