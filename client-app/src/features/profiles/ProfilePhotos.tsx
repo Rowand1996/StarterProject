@@ -45,7 +45,7 @@ const ProfilePhotos = () => {
               loading={uploadingPhoto}
             />
           ) : (
-            <Card.Group itemPerRow={5}>
+            <Card.Group itemperrow={5}>
               {profile &&
                 profile.photos.map((photo) => (
                   <Card key={photo.id}>
