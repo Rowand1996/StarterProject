@@ -20,7 +20,8 @@ namespace Persistence.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR")
+                        .HasMaxLength(36);
 
                     b.Property<string>("Category")
                         .HasColumnType("TEXT");
@@ -48,7 +49,8 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.AppUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR")
+                        .HasMaxLength(36);
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
@@ -119,10 +121,12 @@ namespace Persistence.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR")
+                        .HasMaxLength(36);
 
                     b.Property<Guid?>("ActivityId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR")
+                        .HasMaxLength(36);
 
                     b.Property<string>("AuthorId")
                         .HasColumnType("TEXT");
@@ -145,7 +149,8 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Photo", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR")
+                        .HasMaxLength(36);
 
                     b.Property<string>("AppUserId")
                         .HasColumnType("TEXT");
@@ -169,7 +174,8 @@ namespace Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<Guid>("ActivityId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR")
+                        .HasMaxLength(36);
 
                     b.Property<DateTime>("DateJoined")
                         .HasColumnType("TEXT");
@@ -233,7 +239,8 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR")
+                        .HasMaxLength(36);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
